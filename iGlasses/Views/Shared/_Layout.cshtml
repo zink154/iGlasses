@@ -6,9 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
+    <!-- Navigation Bar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,26 +17,86 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Application Name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Home Link -->
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <!-- Account Management Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Account <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Forgot Password", "ForgotPassword", "Account")</li>
+                            <li>@Html.ActionLink("Reset Password", "ResetPassword", "Account")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Product Management Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Products <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("All Products", "Index", "Products")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Cart Management Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cart Management <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("View Cart", "Index", "Carts")</li>
+                            <li>@Html.ActionLink("Cart Items", "Index", "CartItems")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Orders Management Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Orders <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("View Orders", "Index", "Orders")</li>
+                            <li>@Html.ActionLink("Order Items", "Index", "OrderItems")</li>
+                            <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
+                        </ul>
+                    </li>
+
+                    <!-- News -->
+                    <li>@Html.ActionLink("News", "Index", "News")</li>
                 </ul>
+                <!-- Login Partial -->
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
+    <!-- Main Content -->
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <!-- Footer -->
+        <footer class="text-center">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>
+                Follow us on
+                <a href="#" class="text-info">Twitter</a>,
+                <a href="#" class="text-info">Facebook</a>,
+                <a href="#" class="text-info">Instagram</a>.
+            </p>
         </footer>
     </div>
 
+    <!-- Scripts -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
